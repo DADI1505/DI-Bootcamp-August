@@ -49,6 +49,31 @@ for key,value in family.items() :
         cinema_cost +=15
 print("the total cost is",cinema_cost)
 
+
+"""
+correct form
+
+family = {}
+while True:
+  name = input("entrer le nom des personnes de votre famille (ou taper quitter pour quitter) :")
+  if name.upper() == "QUITTER":
+    break
+  age = int(input("entrer leurs ages : "))
+  family[name] = age 
+
+total_cost= 0
+print(family.items())
+for name,age in family.items() :
+  if age < 3:
+    cost = 0
+  elif 3 <= age <= 12:
+    cost = 10
+  else:
+    cost = 15
+  total_cost += cost  #cinema_cost + cost
+  print(f"{name} :${cost}")
+"""
+
 """
 EXERCISE 3
 """
