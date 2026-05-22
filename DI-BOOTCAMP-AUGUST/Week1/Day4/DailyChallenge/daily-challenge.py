@@ -16,23 +16,29 @@ class Pagination :
     def go_to_page(self,page_num) : 
         if not 1 <= page_num <= self.total_page:
              raise ValueError("Value isn't in pagination")
-        self.current_idx = page_num
+        self.current_idx = page_num -1
          
     def first_page(self):
         self.current_idx = 0
         # return self
         
     def last_page(self):
-        self.current_idx = self.total_page - 1      # ✅ feedback #4 : total_page - 1
+        self.current_idx = self.total_page     # ✅ feedback #4 : total_page - 1
+        
         # return self 
         
     def next_page(self):
-         self.current_idx = self.total_page - 1      # ✅ feedback #4 : total_page - 1
+        if self.current_idx < self.total_page :
+         self.current_idx = 0
+        else : 
+            self.current_idx += 1
         #  return self   
         
     def previous_page(self):
-         if self.current_idx < self.total_page - 1:  # ✅ feedback #5 : vérification limite
-            self.current_idx += 1
+         if self.current_idx < 0:   
+            self.current_idx = self.total_page
+         else :
+             self.current_idx -= 1
         #  return self
      
     def __str__(self) :
