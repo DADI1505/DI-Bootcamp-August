@@ -2,10 +2,10 @@ import math
 
 class Pagination :
     def __init__(self,items=None,page_size=10):
-        self.items = items if items is not None else []  # ✅ on sauvegarde items
+        self.items = items if items is not None else []  
         self.current_idx =0   
         self.page_size = page_size
-        self.total_page = math.ceil (len(self.items)/self.page_size)
+        self.total_page = math.ceil(len(self.items)/self.page_size)
         
          
     def get_visible_items(self):
@@ -28,22 +28,21 @@ class Pagination :
         # return self 
         
     def next_page(self):
-        if self.current_idx < self.total_page :
+        if self.current_idx >= self.total_page :
          self.current_idx = 0
         else : 
             self.current_idx += 1
         #  return self   
         
     def previous_page(self):
-         if self.current_idx < 0:   
+         if self.current_idx <= 0:   
             self.current_idx = self.total_page
          else :
              self.current_idx -= 1
         #  return self
      
     def __str__(self) :
-       return "\n".join(self.get_visible_items())
-
+       return "\n".join(map(str, self.get_visible_items()))
 
 
 
