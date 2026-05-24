@@ -3,11 +3,7 @@ import random
 
 class Game :
      choice = ["r","p","s"]
-     score = {  
-                "win"   : 0,
-                "draw"  : 0,
-                "loss"  : 0
-             }
+     
          
      def get_user_item(self) :
          while True :
@@ -24,17 +20,16 @@ class Game :
         draw =(user_item == computer_item)
         loss = ( (computer_item == "r" and user_item =="s") or (computer_item == "p" and user_item =="r") or (computer_item == "s" and user_item =="p"))
         if win ==True :
-            Game.score["win"] += 1
             return "You win!"
         
-        elif draw == True :
-            Game.score["draw"] += 1
-            return "You drew!!" 
-        
         elif loss == True :
-            Game.score["loss"] += 1
             return "You lose!"
-     
+
+        else :
+            return "You drew!"
+        # elif draw == True :
+        #     return "You drew!" 
+        
      def play(self) :
         user_item = self.get_user_item()
         print(f"You are selected {user_item}")
@@ -43,6 +38,13 @@ class Game :
         print(f"Computer selected {computer_item}")
         
         result = self.get_game_result(user_item,computer_item)
-        return Game.score
+        print (result)
+        if result == 'You win!' :
+            return "win"
+        elif result == 'You drew!' :
+            return "draw"
+        if result == 'You lose!' :
+            return "loss"
+            
         
         

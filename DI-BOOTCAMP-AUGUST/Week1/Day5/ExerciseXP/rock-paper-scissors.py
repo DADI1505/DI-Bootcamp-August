@@ -14,9 +14,16 @@ def print_results(results) :
 def main() :
     party = game.Game()
     user = get_user_menu_choice()
+    result = {
+              "win" : 0 , 
+              "draw": 0, 
+              "loss" : 0
+              }
     while not user == "x":
-        print_results(party.play())
+        joy = party.play()
+        result[joy]+=1
         user = get_user_menu_choice()
+    print_results(result)
     print("\nThank you for playing")
     
     
